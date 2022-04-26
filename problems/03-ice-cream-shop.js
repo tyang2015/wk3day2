@@ -14,6 +14,12 @@ iceCreamShop([], 'honey lavender'); // false
 
 
 // your code here
+function iceCreamShop(arr, str){
+  let ele = arr.shift()
+  if (ele ===str){return true}
+  if (arr.length===0){return false}
+  return iceCreamShop(arr, str)
+}
 
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
