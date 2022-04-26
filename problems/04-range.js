@@ -9,7 +9,17 @@ range(1, 5); // [1, 2, 3, 4]
 range(3, 4); // [3]
 range(7, 6); // []
 ***********************************************************************/
+function range(start, end) {
+  // let num = start
+  if (start>=end){return []}
+  // MUST return the array itself
+  // let num = start
+  return [start, ...range(start+1, end)]
+}
 
+console.log(range(1, 5)); // [1, 2, 3, 4]
+console.log(range(3, 4)); // [3]
+console.log(range(7, 6)); // []
 
 // your code here
 
