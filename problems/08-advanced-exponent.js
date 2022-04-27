@@ -1,4 +1,5 @@
 /***********************************************************************
+//  * why do i get an error in mocha? when i receive correct output
 Write a more advanced version of the recursive `exponent` function that
 you just wrote. Instead of multiplying the base number by itself n power of
 times, like you did previously, you will be squaring the results of the base
@@ -24,6 +25,7 @@ advancedExponent(2, 0); // 1
 advancedExponent(2, 1); // 2
 advancedExponent(2, 2); // 4
 advancedExponent(2, 3); // 8
+// 2 * 2 *2
 advancedExponent(2, 4); // 16
 advancedExponent(2, 5); // 32
 advancedExponent(2, 6); // 64
@@ -42,8 +44,26 @@ times `advancedExponent` is being recursively called.
 
 function advancedExponent(b, n) {
   // your code here
+  // count = 0
+  if (n===0){return 1}
+  return b * advancedExponent(b, n-1)
 }
 
+
+// advancedExponent(2, 0); // 1
+// advancedExponent(2, 1); // 2
+console.log(advancedExponent(2, 2)); // 4
+console.log(advancedExponent(2, 3)); // 8
+// 2 * 2 *2
+console.log(advancedExponent(2, 4)); // 16
+advancedExponent(2, 5); // 32
+console.log(advancedExponent(2, 6)); // 64
+advancedExponent(2, 7); // 128
+console.log(advancedExponent(2, 8)); // 256
+console.log(advancedExponent(2, 9)); // 512
+console.log(advancedExponent(2, 10)); // 1024
+console.log(advancedExponent(2, 11)); // 2048
+console.log(advancedExponent(2, 12)); // 4096
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

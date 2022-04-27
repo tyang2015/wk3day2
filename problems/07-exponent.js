@@ -1,5 +1,5 @@
 /***********************************************************************
-Write a recursive function called `exponent` that takes two integers, 
+Write a recursive function called `exponent` that takes two integers,
 `num` and `power`, and returns `num` raised to the `power`th power. Your
 function should work when `num` or `power` are positive OR negative.
 
@@ -21,9 +21,23 @@ exponent(5, 5); // 3125
 ***********************************************************************/
 
 function exponent(b, n) {
-  // your code here
+  let countdown = Math.abs(n)-1
+  if (countdown<0) {return 1}
+  if (n<0){
+    let countdown = Math.abs(n)-1
+    return (1/b) * exponent(b,-countdown)
+  }
+  else {
+    return b * exponent(b, countdown)
+  }
 }
-  
+
+
+console.log(exponent(3, 2)); // 9
+console.log(exponent(2, -2)); // 1/4 (or 0.25)
+console.log(exponent(5, 5)); // 3125
+
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = exponent;

@@ -23,7 +23,38 @@ sort([]); // []
 
 function sort(nums, sorted = []) {
   // your code here
+  if (nums.length===0){return sorted}
+  let min = Math.min(...nums)
+  for (let i =0; i<nums.length; i++){
+    if (nums[i]===min){
+      nums.splice(i, 1)
+      break
+    }
+  }
+  // console.log("Nums array after spliced: ", nums)
+  sorted.push(min)
+  // console.log("Sorted array with added item: ", sorted)
+  return sort(nums, sorted)
+
 }
+
+// const arr = [4,1,6,3,1,7]
+// const nums =[4,1,6,3,1,7]
+// let min = Math.min(...nums)
+// for (let i =0 ; i<nums.length; i++){
+//   if (nums[i]===min){
+//     nums.splice(i, 1)
+//     break
+//   }
+// }
+
+// console.log(min)
+// console.log(arr)
+// console.log("nums array is: ", nums)
+console.log(sort([4,1,6,3,1,7])); // [1, 1, 3, 4, 6, 7]
+console.log(sort([0, 1, -3])); // [-3, 0, 1]
+console.log(sort([])); // []
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
