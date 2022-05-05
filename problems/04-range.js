@@ -9,12 +9,21 @@ range(1, 5); // [1, 2, 3, 4]
 range(3, 4); // [3]
 range(7, 6); // []
 ***********************************************************************/
-function range(start, end) {
-  // let num = start
+// function range(start, end) {
+//   let arr= []
+//   if (start>=end){return []}
+//   arr.push(start, ...range(start+1, end))
+//   return arr
+// }
+
+
+function range(start, end){
+  let arr=[]
   if (start>=end){return []}
-  // MUST return the array itself
-  // let num = start
-  return [start, ...range(start+1, end)]
+  // arr.push(start)
+  arr.push(start, ...range(start+1, end))
+  return arr
+
 }
 
 console.log(range(1, 5)); // [1, 2, 3, 4]

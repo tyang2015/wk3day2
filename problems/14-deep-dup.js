@@ -1,4 +1,4 @@
-// QUESTION: WHY DOES THIS NOT PASS? 
+// QUESTION: WHY DOES THIS NOT PASS?
 
 /***********************************************************************
 A shallow copy makes a copy of the reference to X (an array), into Y.
@@ -39,17 +39,30 @@ console.log(x[0] === y[0]) // true
 ***********************************************************************/
 
 // your code here
+// function deepDup(arr){
+//   // deep duplication means that arrays are stored in different memory address and when compared to each other, should evaluate to false
+//   // let copy = arr.slice()
+//   let newArr= []
+//   if (arr.length===0){return newArr}
+//   let firstEle = arr.shift()
+//   newArr.push(firstEle, ...deepDup(arr))
+//   return newArr
+
+// }
+
 function deepDup(arr){
-  // deep duplication means that arrays are stored in different memory address and when compared to each other, should evaluate to false
-  // let copy = arr.slice()
-  let newArr= []
-  if (arr.length===0){return newArr}
-  let firstEle = arr.shift()
-  newArr.push(firstEle, ...deepDup(arr))
-  return newArr
-
-
-
+  let newArr=[]
+  for (let i=0; i<arr.length; i++){
+    let el = arr[i]
+    if (Array.isArray(el)){
+      console.log("It's an Array! === " , el)
+      newArr.push(deepDup(el));
+    }
+    else {
+      console.log('its NOT an array--------' , el)
+      newArr.push(el)}
+  }
+  return newArr;
 }
 
 

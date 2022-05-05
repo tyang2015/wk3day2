@@ -21,20 +21,30 @@ sort([0, 1, -3]); // [-3, 0, 1]
 sort([]); // []
 ***********************************************************************/
 
-function sort(nums, sorted = []) {
-  // your code here
-  if (nums.length===0){return sorted}
+// function sort(nums, sorted = []) {
+//   if (nums.length===0){return sorted}
+//   let min = Math.min(...nums)
+//   for (let i =0; i<nums.length; i++){
+//     if (nums[i]===min){
+//       nums.splice(i, 1)
+//       break
+//     }
+//   }
+//   // console.log("Nums array after spliced: ", nums)
+//   sorted.push(min)
+//   // console.log("Sorted array with added item: ", sorted)
+//   return sort(nums, sorted)
+// }
+
+// works too! :) without using default parameters
+function sort(nums){
+  if (nums.length===0){return []}
+  let arr=[]
   let min = Math.min(...nums)
-  for (let i =0; i<nums.length; i++){
-    if (nums[i]===min){
-      nums.splice(i, 1)
-      break
-    }
-  }
-  // console.log("Nums array after spliced: ", nums)
-  sorted.push(min)
-  // console.log("Sorted array with added item: ", sorted)
-  return sort(nums, sorted)
+  let smallestNumArr = nums.splice(nums.indexOf(min), 1)
+  arr.push(...smallestNumArr, ...sort(nums))
+  return arr
+
 
 }
 

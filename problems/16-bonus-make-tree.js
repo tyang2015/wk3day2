@@ -62,10 +62,58 @@ The call above should return the tree below:
 }
 
 ***********************************************************************/
-
+// find cateogry where category[parent]== null, assign it first to new object: object
+// iterate through each category (which will have properties: parent and id)
+// check condition: if category['parent']== parent
+//  set object[id] = makeTree[ , parent]
 const makeTree = (categories, parent) => {
-  // your code here
+  let obj = {}
+  for (let i=0; i<categories.length; i++){
+    let category = categories[i]
+    let catId = category.id
+    let catParent = category.parent
+    console.log("caId is : " +catId)
+    // we are going to recursively find the subtrees that connect to the current category's id
+    if (catParent=== parent){
+      console.log('recursing begins')
+      obj[catId]= makeTree(categories, catId)
+    }
+  }
+  console.log(obj)
+  return obj
 };
+
+const categories2 = [
+  { id: 'animals', 'parent': null },
+  { id: 'mammals', 'parent': 'animals' },
+  { id: 'cats', 'parent': 'mammals' },
+  { id: 'dogs', 'parent': 'mammals' },
+  { id: 'chihuahua', 'parent': 'dogs' },
+  { id: 'labrador', 'parent': 'dogs' },
+  { id: 'persian', 'parent': 'cats' },
+  { id: 'siamese', 'parent': 'cats' }
+];
+
+// Then we call the function with the categories:
+const tree2 = makeTree(categories2, null);
+console.log(tree2)
+// The call above should return the tree below:
+
+// {
+//   animals: {
+//       mammals: {
+//           dogs: {
+//               chihuahua: {}
+//               labrador: {}
+//           }
+//           cats: {
+//               persian: {}
+//               siamese: {}
+//           }
+//       }
+//   }
+// }
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
